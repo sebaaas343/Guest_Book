@@ -4,13 +4,6 @@ abstract class GuestbookRepository
 {
 
     /**
-     * @return int
-     */
-    public function getNextId() {
-        return count($this->getAll()) + 1;
-    }
-
-    /**
      * @param GuestbookMessage $model
      *
      * @return bool
@@ -18,8 +11,9 @@ abstract class GuestbookRepository
     abstract public function add($model);
 
     /**
+     * @param int $page
      * @return GuestbookMessage[]
      */
-    abstract public function getAll();
+    abstract public function getAll($page);
 
 }

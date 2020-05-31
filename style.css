@@ -1,13 +1,13 @@
 
 
-.head {text-align: center}
-.form{
+
+.form-line{
     border: 3px outset black;
     width: 30%;
     padding-left: 20px;
     margin-top: 50px;
 }
-.panel{
+.message{
     border: 3px outset black;
     width: 30%;
     margin-top:  20px;

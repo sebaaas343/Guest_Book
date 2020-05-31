@@ -3,9 +3,9 @@
 class GuestbookMessage
 {
 
-    public $time;
     public $username;
     public $message;
+    public $time;
 
     /**
      * GuestbookMessage constructor.
@@ -44,6 +44,44 @@ class GuestbookMessage
         $this->message = $a["message"];
         $this->username = $a["username"];
 
+    }
+
+    private $errors = [];
+
+    /**
+     * @return bool
+     */
+    public function validate() {
+
+        $hasErrors = false;
+        $this->errors = [];
+
+        if (!$this->username) {
+            $hasErrors = true;
+            $this->errors[] = "Не заполнено ваше имя";
+        }
+
+        if (!$this->message) {
+            $hasErrors = true;
+            $this->errors[] = "Не заполнено ваше сообщение";
+        }
+
+        return !$hasErrors;
+
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasErrors() {
+        return count($this->errors) !== 0;
+    }
+
+    /**
+     * @return string
+     */
+    public function errorSummary() {
+        return implode(PHP_EOL, $this->errors);
     }
 
 }
